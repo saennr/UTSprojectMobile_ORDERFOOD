@@ -89,6 +89,7 @@
             android:layout_height="wrap_content"
             android:text="Place Order"
             android:textColor="@android:color/white"
+            android:backgroundTint="@color/blue"
             android:padding="12dp"/>
 
 </LinearLayout>

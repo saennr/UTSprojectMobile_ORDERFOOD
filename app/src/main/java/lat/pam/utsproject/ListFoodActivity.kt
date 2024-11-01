@@ -6,8 +6,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ListFoodActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -19,11 +25,10 @@ class ListFoodActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_list_food)
 
-
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Menyiapkan data makanan
+        // Initialize the food list data
         foodList = listOf(
             Food("Batagor", "Batagor asli enak dari Bandung", R.drawable.batagor),
             Food("Black Salad", "Salad segar yang dibuat secara langsung", R.drawable.black_salad),
@@ -37,18 +42,12 @@ class ListFoodActivity : AppCompatActivity() {
             Food("Sparkling Tea", "Minuman teh segar dengan sensasi soda", R.drawable.sparkling_tea),
         )
 
-        adapter = FoodAdapter(foodList) { selectedFood ->
-            val  intent = Intent(this, OrderActivity::class.java)
-            intent.putExtra("foodName", selectedFood.name)
+        adapter = FoodAdapter(foodList) { foodName ->
+            val intent = Intent(this, OrderActivity::class.java)
+            intent.putExtra("food_name", foodName.name)
+
             startActivity(intent)
         }
         recyclerView.adapter = adapter
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 }

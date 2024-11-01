@@ -18,26 +18,28 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"/>
 
     <!-- Confirmation Nama Makanan -->
     <TextView
+        android:id="@+id/foodNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Food Name: Batagor"
         android:textSize="18sp"
         android:layout_marginBottom="8dp"/>
 
     <!-- Confirmation Jumlah Porsi -->
     <TextView
+        android:id="@+id/jumlahTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number of Servings: 2 pax"
         android:textSize="18sp"
         android:layout_marginBottom="8dp"/>
 
     <!-- Confirmation Nama pengorder -->
     <TextView
+        android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ordering Name: Usep"
@@ -46,6 +48,7 @@
 
     <!-- Input Catatan Tambahan -->
     <TextView
+        android:id="@+id/notesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Additional Notes: Tidak Pedas"
@@ -65,6 +68,8 @@
         android:id="@+id/backtoMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
         android:text="Back to Menu" />
 
 </LinearLayout>

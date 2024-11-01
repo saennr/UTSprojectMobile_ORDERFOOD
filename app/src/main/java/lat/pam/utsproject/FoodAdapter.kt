@@ -22,25 +22,19 @@ class FoodAdapter(private val foodList: List<Food>,
         holder.foodName.text = food.name
         holder.foodDescription.text = food.description
         holder.foodImage.setImageResource(food.imageResourceId)
+
+        holder.itemView.setOnClickListener() {
+            onItemClick(food)
+        }
     }
 
     override fun getItemCount(): Int {
         return foodList.size
     }
 
-    inner class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val foodImage: ImageView = itemView.findViewById(R.id.foodImage)
         val foodName: TextView = itemView.findViewById(R.id.foodName)
         val foodDescription: TextView = itemView.findViewById(R.id.foodDescription)
-
-        fun bind(food: Food) {
-            foodName.text = food.name
-            foodDescription.text = food.description
-            foodImage.setImageResource(food.imageResourceId)
-
-            itemView.setOnClickListener{
-                onItemClick(food)
-            }
-        }
     }
 }

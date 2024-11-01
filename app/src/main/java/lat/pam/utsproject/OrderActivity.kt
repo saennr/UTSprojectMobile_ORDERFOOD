@@ -1,6 +1,8 @@
 package lat.pam.utsproject
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -11,15 +13,28 @@ import androidx.core.view.WindowInsetsCompat
 class OrderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_order)
 
-        val foodName = intent.getStringExtra("foodName")
+        val foodName = intent.getStringExtra("food_name")
+        val etFoodName: TextView = findViewById(R.id.etFoodName)
+        etFoodName.text = foodName
 
-        val foodNameTextView = findViewById<TextView>(R.id.etFoodName)
+        val btnOrder: Button = findViewById(R.id.btnOrder)
+        btnOrder.setOnClickListener {
+            val servings = findViewById<EditText>(R.id.etServings).text.toString()
+            val name = findViewById<EditText>(R.id.etName).text.toString()
+            val notes = findViewById<EditText>(R.id.etNotes).text.toString()
 
-        foodNameTextView.text = foodName
-
-
+            // Create intent and pass data to ConfirmationActivity
+            val intent = Intent(this, ConfirmationActivity::class.java).apply {
+                putExtra("foodName", foodName)
+                putExtra("servings", servings)
+                putExtra("name", name)
+                putExtra("notes", notes)
+            }
+            startActivity(intent)
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

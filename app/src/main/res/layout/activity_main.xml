@@ -15,11 +15,13 @@
     <!-- Logo Aplikasi -->
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logo"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="32dp"/>
+        android:layout_marginBottom="32dp"
+        android:contentDescription="@string/content_description_Logo"/>
 
     <!-- Username Field -->
     <EditText
@@ -50,8 +52,10 @@
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:layout_gravity="center_horizontal"
-        android:textColor="@android:color/white"
-        android:layout_marginBottom="16dp"/>
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
+        android:layout_marginBottom="16dp"
+        android:paddingTop="15dp"/>
 
     <!-- Register Link -->
     <TextView
